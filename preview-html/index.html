@@ -253,8 +253,8 @@ padding:145px 0;
 width:1450px;
 margin:auto;
 display:grid;
-grid-template-columns:430px 1fr;
-column-gap:120px;
+grid-template-columns:550px 1fr;
+column-gap:100px;
 align-items:center;
 }
 .process-left small{
@@ -267,8 +267,8 @@ margin-bottom:24px;
 }
 .process-left h2{
 font-family:"Cormorant Garamond",serif;
-font-size:60px;
-line-height:1.10;
+font-size:58px;
+line-height:1.12;
 font-weight:500;
 color:#08111C;
 margin-bottom:34px;
@@ -280,21 +280,32 @@ color:#5F6770;
 margin-bottom:45px;
 }
 .process-btn{
+display:inline-flex;
+align-items:center;
+gap:14px;
 height:56px;
-padding:0 36px;
+padding:0 32px;
 background:#08111C;
-color:#fff;
-border:none;
+color:#D8A23A;
+border:1px solid #D8A23A;
 font-size:13px;
 letter-spacing:.18em;
 text-transform:uppercase;
 cursor:pointer;
+transition:background .25s ease,color .25s ease;
+}
+.process-btn:hover{
+background:#D8A23A;
+color:#08111C;
+}
+.process-btn svg{
+flex-shrink:0;
 }
 .process-flow{
 display:flex;
 align-items:center;
-justify-content:center;
-gap:45px;
+justify-content:flex-start;
+gap:36px;
 height:420px;
 }
 .process-box{
@@ -305,85 +316,106 @@ box-shadow:
 0 20px 60px rgba(0,0,0,.08);
 }
 .input-box{
-width:220px;
-height:250px;
-padding:18px;
+width:230px;
+height:262px;
+padding:12px 18px 20px;
 border-radius:14px;
 background:#fff;
-box-shadow:0 18px 45px rgba(0,0,0,.08);
+border:1px solid #ECECEC;
+box-shadow:0 20px 50px rgba(0,0,0,.09);
 display:flex;
 flex-direction:column;
 align-items:center;
 justify-content:flex-start;
 }
 .dashboard-preview{
-width:170px;
+width:200px;
 border-radius:8px;
 display:block;
-margin:0 auto 18px auto;
+margin:0 auto 14px auto;
 }
 .input-box h4{
-margin-top:20px;
-font-size:17px;
-font-weight:500;
+margin-top:4px;
+font-size:15px;
+font-weight:400;
 color:#08111C;
 }
 .input-box p{
-margin-top:10px;
-font-size:14px;
-line-height:28px;
+margin-top:8px;
+font-size:13px;
+line-height:24px;
 text-align:center;
 color:#666;
+font-weight:400;
 }
 .engine-box{
 width:285px;
-height:170px;
+height:188px;
 border-radius:10px;
 background:#07111B;
+border:none;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-box-shadow:0 18px 45px rgba(0,0,0,.18);
+box-shadow:0 22px 55px rgba(0,0,0,.22);
 }
 .engine-title{
 font-size:26px;
 font-weight:500;
 color:white;
-margin-bottom:26px;
+margin-bottom:22px;
 }
 .engine-sub{
-font-size:18px;
+font-size:17px;
 color:#C9C9C9;
+letter-spacing:.02em;
+}
+.engine-dot{
+color:#D6A33A;
+padding:0 2px;
 }
 .engine-sub2{
-margin-top:16px;
-font-size:17px;
+margin-top:14px;
+font-size:16px;
 color:#8F8F8F;
 }
 .output-box{
-width:185px;
-height:250px;
-padding:34px;
+width:190px;
+height:262px;
+padding:36px 28px;
 border-radius:14px;
 background:white;
-box-shadow:0 18px 45px rgba(0,0,0,.08);
+border:1px solid #ECECEC;
+box-shadow:0 20px 50px rgba(0,0,0,.09);
 display:flex;
 flex-direction:column;
 justify-content:center;
-gap:34px;
+gap:28px;
 }
 .output-item{
 display:flex;
 align-items:center;
-gap:18px;
-font-size:18px;
+gap:20px;
+width:100%;
+font-size:17px;
 color:#08111C;
 }
 .output-item img{
-width:30px;
-height:30px;
+width:32px;
+height:32px;
 object-fit:contain;
+flex-shrink:0;
+}
+.arrow{
+display:flex;
+align-items:center;
+flex-shrink:0;
+}
+.arrow svg line,
+.arrow svg polyline{
+stroke:#4A4A4A;
+stroke-width:1.5;
 }
 
 /* =======================================================
@@ -715,6 +747,9 @@ and internal documentation.
 </p>
 <button class="process-btn">
 SEE HOW IT WORKS
+<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+<path d="M1 7h11M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5"/>
+</svg>
 </button>
 </div>
 <div class="process-flow">
@@ -733,15 +768,9 @@ SEE HOW IT WORKS
     </p>
 </div>
 <div class="arrow">
-<svg width="48" height="18">
-<line x1="0" y1="9" x2="40" y2="9"
-stroke="#5E5E5E"
-stroke-width="2"/>
-<polyline
-points="34,3 42,9 34,15"
-fill="none"
-stroke="#5E5E5E"
-stroke-width="2"/>
+<svg width="48" height="18" aria-hidden="true">
+<line x1="0" y1="9" x2="40" y2="9"/>
+<polyline points="34,3 42,9 34,15" fill="none"/>
 </svg>
 </div>
 <!-- CARD 2 -->
@@ -750,22 +779,16 @@ stroke-width="2"/>
         CAP Governance
     </div>
     <div class="engine-sub">
-        Policy • Rules • Evidence
+        Policy <span class="engine-dot">•</span> Rules <span class="engine-dot">•</span> Evidence
     </div>
     <div class="engine-sub2">
         Audit Trail
     </div>
 </div>
 <div class="arrow">
-<svg width="48" height="18">
-<line x1="0" y1="9" x2="40" y2="9"
-stroke="#5E5E5E"
-stroke-width="2"/>
-<polyline
-points="34,3 42,9 34,15"
-fill="none"
-stroke="#5E5E5E"
-stroke-width="2"/>
+<svg width="48" height="18" aria-hidden="true">
+<line x1="0" y1="9" x2="40" y2="9"/>
+<polyline points="34,3 42,9 34,15" fill="none"/>
 </svg>
 </div>
 <!-- CARD 3 -->
