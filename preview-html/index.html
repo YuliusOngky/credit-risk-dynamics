@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Credit Risk Dynamics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+body{
+background:#07111B;
+font-family:Inter,sans-serif;
+color:white;
+overflow-x:hidden;
+}
+header{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+z-index:100;
+}
+.header{
+width:1450px;
+height:82px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 10px;
+}
+.logo{
+display:flex;
+align-items:center;
+}
+.logo-line{
+width:4px;
+height:42px;
+background:#D6A33A;
+margin-right:18px;
+}
+.logo-title{
+font-size:14px;
+font-weight:600;
+letter-spacing:.18em;
+line-height:22px;
+}
+nav{
+display:flex;
+gap:48px;
+}
+nav a{
+color:white;
+text-decoration:none;
+font-size:11px;
+letter-spacing:.18em;
+text-transform:uppercase;
+opacity:.82;
+}
+.right{
+display:flex;
+gap:18px;
+}
+.demo{
+height:42px;
+padding:0 26px;
+background:none;
+border:1px solid rgba(255,255,255,.25);
+color:white;
+font-size:11px;
+letter-spacing:.18em;
+}
+.brief{
+height:42px;
+padding:0 28px;
+border:none;
+background:#D6A33A;
+color:#07111B;
+font-weight:600;
+font-size:11px;
+letter-spacing:.18em;
+}
+.hero{
+position:relative;
+height:940px;
+background:url(images/meetingroom.png?v=20260704220854) center center/cover;
+overflow:hidden;
+}
+.hero::before{
+content:"";
+position:absolute;
+inset:0;
+background:rgba(6,17,27,.60);
+}
+.hero::after{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(90deg,#07111B 0%,rgba(7,17,27,.94) 28%,rgba(7,17,27,.72) 55%,rgba(7,17,27,.18) 78%,transparent);
+}
+.hero-content{
+position:relative;
+z-index:5;
+width:1450px;
+height:100%;
+margin:auto;
+display:flex;
+align-items:center;
+}
+.left{
+width:620px;
+}
+.tag{
+font-size:13px;
+letter-spacing:.40em;
+color:#D6A33A;
+margin-bottom:38px;
+text-transform:uppercase;
+}
+.hero h1{
+font-family:"Cormorant Garamond",serif;
+font-size:78px;
+font-weight:500;
+line-height:1.02;
+}
+.hero h1 span{
+color:#D6A33A;
+}
+.desc{
+margin-top:42px;
+font-size:21px;
+line-height:38px;
+color:rgba(255,255,255,.72);
+width:560px;
+}
+.buttons{
+margin-top:52px;
+display:flex;
+gap:18px;
+}
+.primary{
+height:56px;
+padding:0 36px;
+border:none;
+background:#D6A33A;
+font-weight:600;
+font-size:14px;
+}
+.secondary{
+height:56px;
+padding:0 34px;
+border:1px solid #D6A33A;
+background:none;
+color:#D6A33A;
+}
+.scroll{
+margin-top:90px;
+display:flex;
+align-items:center;
+gap:18px;
+}
+.scroll-line{
+width:1px;
+height:60px;
+background:#D6A33A;
+}
+.scroll span{
+font-size:12px;
+letter-spacing:.35em;
+color:rgba(255,255,255,.55);
+text-transform:uppercase;
+}
+
+/* =======================================================
+   CREDIT DECISION PROBLEM
+======================================================= */
+.problem{
+background:#07111B;
+padding:140px 0 150px;
+border-top:1px solid rgba(255,255,255,.05);
+}
+.problem-wrap{
+width:1450px;
+margin:auto;
+}
+.problem-tag{
+font-size:13px;
+letter-spacing:.40em;
+color:#D6A33A;
+text-transform:uppercase;
+}
+.problem-title{
+margin-top:26px;
+font-family:"Cormorant Garamond",serif;
+font-size:58px;
+line-height:1.15;
+font-weight:500;
+width:760px;
+}
+.problem-grid{
+margin-top:85px;
+display:grid;
+grid-template-columns:repeat(6,1fr);
+border-top:1px solid rgba(255,255,255,.08);
+border-bottom:1px solid rgba(255,255,255,.08);
+}
+.problem-item{
+padding:55px 34px 60px;
+border-right:1px solid rgba(255,255,255,.08);
+min-height:340px;
+}
+.problem-item:last-child{
+border-right:none;
+}
+.problem-icon{
+width:62px;
+height:62px;
+border:1px solid rgba(214,163,58,.45);
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:24px;
+color:#D6A33A;
+margin-bottom:35px;
+}
+.problem-item h3{
+font-size:20px;
+font-weight:500;
+line-height:30px;
+margin-bottom:24px;
+}
+.problem-item p{
+font-size:15px;
+line-height:30px;
+color:rgba(255,255,255,.68);
+}
+
+/* =======================================================
+   WORKS WITH YOUR EXISTING PROCESS
+=======================================================*/
+.process{
+background:#ffffff;
+padding:145px 0;
+}
+.process-wrap{
+width:1450px;
+margin:auto;
+display:grid;
+grid-template-columns:430px 1fr;
+column-gap:120px;
+align-items:center;
+}
+.process-left small{
+display:block;
+font-size:13px;
+letter-spacing:.40em;
+text-transform:uppercase;
+color:#C89B39;
+margin-bottom:24px;
+}
+.process-left h2{
+font-family:"Cormorant Garamond",serif;
+font-size:60px;
+line-height:1.10;
+font-weight:500;
+color:#08111C;
+margin-bottom:34px;
+}
+.process-left p{
+font-size:18px;
+line-height:36px;
+color:#5F6770;
+margin-bottom:45px;
+}
+.process-btn{
+height:56px;
+padding:0 36px;
+background:#08111C;
+color:#fff;
+border:none;
+font-size:13px;
+letter-spacing:.18em;
+text-transform:uppercase;
+cursor:pointer;
+}
+.process-flow{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:45px;
+height:420px;
+}
+.process-box{
+background:#fff;
+border:1px solid #ECECEC;
+border-radius:10px;
+box-shadow:
+0 20px 60px rgba(0,0,0,.08);
+}
+.input-box{
+width:220px;
+height:250px;
+padding:18px;
+border-radius:14px;
+background:#fff;
+box-shadow:0 18px 45px rgba(0,0,0,.08);
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:flex-start;
+}
+.dashboard-preview{
+width:170px;
+border-radius:8px;
+display:block;
+margin:0 auto 18px auto;
+}
+.input-box h4{
+margin-top:20px;
+font-size:17px;
+font-weight:500;
+color:#08111C;
+}
+.input-box p{
+margin-top:10px;
+font-size:14px;
+line-height:28px;
+text-align:center;
+color:#666;
+}
+.engine-box{
+width:285px;
+height:170px;
+border-radius:10px;
+background:#07111B;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+box-shadow:0 18px 45px rgba(0,0,0,.18);
+}
+.engine-title{
+font-size:26px;
+font-weight:500;
+color:white;
+margin-bottom:26px;
+}
+.engine-sub{
+font-size:18px;
+color:#C9C9C9;
+}
+.engine-sub2{
+margin-top:16px;
+font-size:17px;
+color:#8F8F8F;
+}
+.output-box{
+width:185px;
+height:250px;
+padding:34px;
+border-radius:14px;
+background:white;
+box-shadow:0 18px 45px rgba(0,0,0,.08);
+display:flex;
+flex-direction:column;
+justify-content:center;
+gap:34px;
+}
+.output-item{
+display:flex;
+align-items:center;
+gap:18px;
+font-size:18px;
+color:#08111C;
+}
+.output-item img{
+width:30px;
+height:30px;
+object-fit:contain;
+}
+
+/* =======================================================
+   BUSINESS IMPACT
+======================================================= */
+.impact{
+background:#ffffff;
+padding:150px 0 140px;
+border-top:1px solid #EFEFEF;
+}
+.impact-wrap{
+width:1450px;
+margin:auto;
+}
+.impact-tag{
+font-size:13px;
+letter-spacing:.42em;
+text-transform:uppercase;
+color:#C99A37;
+margin-bottom:26px;
+}
+.impact-title{
+font-family:"Cormorant Garamond",serif;
+font-size:58px;
+font-weight:500;
+line-height:1.15;
+color:#08111C;
+width:760px;
+margin-bottom:90px;
+}
+.impact-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+column-gap:60px;
+}
+.impact-item{
+padding-right:25px;
+}
+.impact-circle{
+width:68px;
+height:68px;
+border:1px solid #D6A33A;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:26px;
+color:#D6A33A;
+margin-bottom:34px;
+}
+.impact-item h3{
+font-size:24px;
+font-weight:500;
+color:#08111C;
+margin-bottom:24px;
+}
+.impact-item p{
+font-size:16px;
+line-height:32px;
+color:#68707B;
+}
+
+/* =======================================================
+   CTA
+======================================================= */
+.cta{
+background:#07111B;
+padding:160px 0;
+}
+.cta-wrap{
+width:1450px;
+margin:auto;
+text-align:center;
+}
+.cta small{
+display:block;
+margin-bottom:28px;
+font-size:13px;
+letter-spacing:.40em;
+color:#D6A33A;
+text-transform:uppercase;
+}
+.cta h2{
+font-family:"Cormorant Garamond",serif;
+font-size:72px;
+line-height:1.08;
+font-weight:500;
+margin-bottom:32px;
+}
+.cta p{
+width:760px;
+margin:auto;
+font-size:20px;
+line-height:38px;
+color:rgba(255,255,255,.70);
+}
+.cta-buttons{
+margin-top:60px;
+display:flex;
+justify-content:center;
+gap:22px;
+}
+.cta-primary{
+height:58px;
+padding:0 42px;
+background:#D6A33A;
+border:none;
+font-size:13px;
+font-weight:600;
+letter-spacing:.18em;
+}
+.cta-secondary{
+height:58px;
+padding:0 40px;
+background:none;
+border:1px solid #D6A33A;
+color:#D6A33A;
+font-size:13px;
+letter-spacing:.18em;
+}
+
+/* =======================================================
+   FOOTER
+======================================================= */
+.footer{
+background:#050D17;
+padding:90px 0 40px;
+}
+.footer-wrap{
+width:1450px;
+margin:auto;
+}
+.footer-top{
+display:grid;
+grid-template-columns:340px 1fr;
+column-gap:120px;
+padding-bottom:70px;
+border-bottom:1px solid rgba(255,255,255,.08);
+}
+.footer-logo{
+display:flex;
+align-items:flex-start;
+}
+.footer-line{
+width:4px;
+height:46px;
+background:#D6A33A;
+margin-right:18px;
+margin-top:2px;
+}
+.footer-brand{
+font-size:18px;
+font-weight:600;
+letter-spacing:.18em;
+line-height:30px;
+}
+.footer-brand span{
+display:block;
+opacity:.65;
+font-size:13px;
+margin-top:6px;
+letter-spacing:.32em;
+}
+.footer-links{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+column-gap:40px;
+}
+.footer-links h4{
+font-size:13px;
+font-weight:600;
+letter-spacing:.22em;
+color:#D6A33A;
+text-transform:uppercase;
+margin-bottom:26px;
+}
+.footer-links ul{
+list-style:none;
+}
+.footer-links li{
+margin-bottom:16px;
+}
+.footer-links a{
+text-decoration:none;
+font-size:15px;
+color:rgba(255,255,255,.72);
+transition:.25s;
+}
+.footer-links a:hover{
+color:#D6A33A;
+}
+.footer-bottom{
+padding-top:34px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-size:14px;
+color:rgba(255,255,255,.42);
+}
+.footer-policy{
+display:flex;
+gap:36px;
+}
+.footer-policy a{
+text-decoration:none;
+color:rgba(255,255,255,.42);
+}
+.footer-policy a:hover{
+color:#D6A33A;
+}
+</style>
+</head>
+<body>
+<header>
+<div class="header">
+<div class="logo">
+<div class="logo-line"></div>
+<div class="logo-title">
+<div>CREDIT RISK</div>
+<div>DYNAMICS</div>
+</div>
+</div>
+<nav>
+<a href="#">Platform</a>
+<a href="#">Governance</a>
+<a href="#">Decision Records</a>
+<a href="#">Resources</a>
+<a href="#">Company</a>
+</nav>
+<div class="right">
+<button class="demo">
+LIVE DEMO
+</button>
+<button class="brief">
+REQUEST BRIEFING
+</button>
+</div>
+</div>
+</header>
+<section class="hero">
+<div class="hero-content">
+<div class="left">
+<div class="tag">
+GOVERNANCE-FIRST CREDIT PLATFORM
+</div>
+<h1>
+Every institution
+<br>
+makes decisions.
+<br>
+<span>Few remember how.</span>
+</h1>
+<p class="desc">
+Credit Assessment Portal (CAP) enables financial institutions to standardize credit governance while preserving every underwriting decision with complete transparency, traceability, and institutional memory.
+</p>
+<div class="buttons">
+<button class="primary">
+Explore Platform
+</button>
+<button class="secondary">
+Watch Overview
+</button>
+</div>
+<div class="scroll">
+<div class="scroll-line"></div>
+<span>
+Scroll To Explore
+</span>
+</div>
+</div>
+</div>
+</section>
+<section class="problem">
+<div class="problem-wrap">
+<div class="problem-tag">THE CREDIT DECISION PROBLEM</div>
+<h2 class="problem-title">
+The problem is not your people.<br>
+It is the fragmented process.
+</h2>
+<div class="problem-grid">
+<div class="problem-item">
+<div class="problem-icon">&#128203;</div>
+<h3>Manual Review</h3>
+<p>KYC, SLIK, and bank statements reviewed manually by analysts</p>
+</div>
+<div class="problem-item">
+<div class="problem-icon">&#128100;</div>
+<h3>Analyst-Dependent Judgment</h3>
+<p>Decisions vary by individual experience, not by policy</p>
+</div>
+<div class="problem-item">
+<div class="problem-icon">&#8599;</div>
+<h3>Inconsistent Decisions</h3>
+<p>Same borrower profile produces different outcomes across teams</p>
+</div>
+<div class="problem-item">
+<div class="problem-icon">&#128336;</div>
+<h3>Long Turnaround Time</h3>
+<p>Assessments pile up, committees wait, revenue is delayed</p>
+</div>
+<div class="problem-item">
+<div class="problem-icon">&#9878;</div>
+<h3>Limited Transparency</h3>
+<p>Committees see summaries without the reasoning</p>
+</div>
+<div class="problem-item">
+<div class="problem-icon">&#128737;</div>
+<h3>Audit &amp; Governance Gaps</h3>
+<p>Scattered evidence that auditors and regulators cannot trace</p>
+</div>
+</div>
+</div>
+</section>
+<section class="process">
+<div class="process-wrap">
+<div class="process-left">
+<small>
+WORKS WITH YOUR EXISTING PROCESS
+</small>
+<h2>
+Modern governance does not
+mean changing everything overnight.
+</h2>
+<p>
+Every governed decision can be operated
+into Excel and PDF for committee meetings,
+executive reporting, regulatory submissions,
+and internal documentation.
+</p>
+<button class="process-btn">
+SEE HOW IT WORKS
+</button>
+</div>
+<div class="process-flow">
+<!-- CARD 1 -->
+<div class="process-box input-box">
+    <img
+        src="ASSET_DEV/dashboard.png?v=1783177740"
+        alt="CAP Dashboard"
+        class="dashboard-preview"
+    >
+    <h4>Decision Record</h4>
+    <p>
+        Created in existing
+        <br>
+        core & Co
+    </p>
+</div>
+<div class="arrow">
+<svg width="48" height="18">
+<line x1="0" y1="9" x2="40" y2="9"
+stroke="#5E5E5E"
+stroke-width="2"/>
+<polyline
+points="34,3 42,9 34,15"
+fill="none"
+stroke="#5E5E5E"
+stroke-width="2"/>
+</svg>
+</div>
+<!-- CARD 2 -->
+<div class="process-box engine-box">
+    <div class="engine-title">
+        CAP Governance
+    </div>
+    <div class="engine-sub">
+        Policy • Rules • Evidence
+    </div>
+    <div class="engine-sub2">
+        Audit Trail
+    </div>
+</div>
+<div class="arrow">
+<svg width="48" height="18">
+<line x1="0" y1="9" x2="40" y2="9"
+stroke="#5E5E5E"
+stroke-width="2"/>
+<polyline
+points="34,3 42,9 34,15"
+fill="none"
+stroke="#5E5E5E"
+stroke-width="2"/>
+</svg>
+</div>
+<!-- CARD 3 -->
+<div class="process-box output-box">
+    <div class="output-item">
+        <img src="ASSET_DEV/excel_logo.png?v=1783177775" alt="">
+        <span>Excel</span>
+    </div>
+    <div class="output-item">
+        <img src="ASSET_DEV/pdf_logo.png?v=1783177724" alt="">
+        <span>PDF</span>
+    </div>
+    <div class="output-item">
+        <img src="ASSET_DEV/api_logo.png?v=1783177715" alt="">
+        <span>API</span>
+    </div>
+</div>
+</div>
+</div>
+</section>
+<section class="impact">
+<div class="impact-wrap">
+<div class="impact-tag">
+BUSINESS IMPACT
+</div>
+<h2 class="impact-title">
+Build institutional memory,
+govern every decision,
+and strengthen underwriting consistency.
+</h2>
+<div class="impact-grid">
+<div class="impact-item">
+<div class="impact-circle">
+🏛
+</div>
+<h3>
+Institutional Governance
+</h3>
+<p>
+Move from individual analyst judgment toward institution-wide governance supported by structured evidence.
+</p>
+</div>
+<div class="impact-item">
+<div class="impact-circle">
+✓
+</div>
+<h3>
+Consistent Decisions
+</h3>
+<p>
+Ensure every applicant is evaluated using the same governance framework regardless of reviewer or branch.
+</p>
+</div>
+<div class="impact-item">
+<div class="impact-circle">
+◎
+</div>
+<h3>
+Decision Memory
+</h3>
+<p>
+Every credit decision becomes searchable institutional knowledge complete with supporting evidence.
+</p>
+</div>
+<div class="impact-item">
+<div class="impact-circle">
+⏱
+</div>
+<h3>
+Operational Efficiency
+</h3>
+<p>
+Reduce repetitive reviews while improving transparency and turnaround time across the organization.
+</p>
+</div>
+</div>
+</div>
+</section>
+<section class="cta">
+<div class="cta-wrap">
+<small>
+READY TO GET STARTED
+</small>
+<h2>
+Ready to strengthen
+every decision?
+</h2>
+<p>
+Discover how Credit Assessment Portal enables financial institutions to preserve institutional knowledge while improving governance, consistency, transparency, and audit readiness.
+</p>
+<div class="cta-buttons">
+<button class="cta-primary">
+REQUEST BRIEFING
+</button>
+<button class="cta-secondary">
+LIVE DEMO
+</button>
+</div>
+</div>
+</section>
+<footer class="footer">
+<div class="footer-wrap">
+<div class="footer-top">
+<div class="footer-logo">
+<div class="footer-line"></div>
+<div class="footer-brand">
+CREDIT RISK
+<br>
+DYNAMICS
+<span>
+Governance Platform
+</span>
+</div>
+</div>
+<div class="footer-links">
+<div>
+<h4>
+Platform
+</h4>
+<ul>
+<li><a href="#">Overview</a></li>
+<li><a href="#">Architecture</a></li>
+<li><a href="#">Capabilities</a></li>
+<li><a href="#">Security</a></li>
+</ul>
+</div>
+<div>
+<h4>
+Governance
+</h4>
+<ul>
+<li><a href="#">Replay</a></li>
+<li><a href="#">Decision Memory</a></li>
+<li><a href="#">Audit Trail</a></li>
+<li><a href="#">Compliance</a></li>
+</ul>
+</div>
+<div>
+<h4>
+Decision Records</h4>
+<ul>
+<li><a href="#">Evidence</a></li>
+<li><a href="#">Versioning</a></li>
+<li><a href="#">History</a></li>
+<li><a href="#">Governance</a></li>
+</ul>
+</div>
+<div>
+<h4>
+Resources
+</h4>
+<ul>
+<li><a href="#">Documentation</a></li>
+<li><a href="#">Whitepaper</a></li>
+<li><a href="#">FAQ</a></li>
+<li><a href="#">Blog</a></li>
+</ul>
+</div>
+<div>
+<h4>
+Company
+</h4>
+<ul>
+<li><a href="#">About</a></li>
+<li><a href="#">Contact</a></li>
+<li><a href="#">LinkedIn</a></li>
+<li><a href="#">YouTube</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="footer-bottom">
+<div>
+© 2026 Credit Risk Dynamics. All rights reserved.
+</div>
+<div class="footer-policy">
+<a href="#">
+Privacy Policy
+</a>
+<a href="#">
+Terms of Use
+</a>
+<a href="#">
+Cookies
+</a>
+</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

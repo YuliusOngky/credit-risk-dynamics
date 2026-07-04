@@ -1,0 +1,16 @@
+# Dependencies & build
+WEB_SOURCECODE/node_modules/
+WEB_SOURCECODE/.next/
+WEB_SOURCECODE/out/
+
+# Env & logs
+**/.env*
+**/npm-debug.log*
+**/.DS_Store
+
+# Archived Cursor scaffold (keep outside repo)
+WEB_SOURCECODE_hidden_cursor/
+
+# IDE
+.idea/
+.vscode/
