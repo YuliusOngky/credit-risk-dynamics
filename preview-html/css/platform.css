@@ -1,0 +1,403 @@
+/* ========================================= */
+/* PLATFORM HERO */
+/* ========================================= */
+.platform-hero {
+  position: relative;
+  min-height: 940px;
+  background-image: linear-gradient(rgba(6, 12, 22, 0.76), rgba(6, 12, 22, 0.76)),
+    url("../ASSET_DEV/meetingroom.png");
+  background-position: center center;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.platform-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    #07111b 0%,
+    rgba(7, 17, 27, 0.94) 28%,
+    rgba(7, 17, 27, 0.72) 55%,
+    rgba(7, 17, 27, 0.18) 78%,
+    transparent
+  );
+  pointer-events: none;
+}
+
+.platform-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(6, 17, 27, 0.15);
+  pointer-events: none;
+}
+
+.platform-hero-content {
+  position: relative;
+  z-index: 5;
+  min-height: 940px;
+  display: flex;
+  align-items: center;
+}
+
+.platform-left {
+  max-width: 620px;
+}
+
+.platform-left .section-label {
+  margin-bottom: 38px;
+}
+
+.platform-left h1 {
+  font-size: 78px;
+  line-height: 1.02;
+  color: #fff;
+}
+
+.platform-left p {
+  margin-top: 42px;
+  font-size: 21px;
+  line-height: 38px;
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 560px;
+}
+
+.hero-buttons {
+  margin-top: 52px;
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+/* ========================================= */
+/* WHAT IS CAP / INTRO */
+/* ========================================= */
+.platform-intro {
+  background: #ffffff;
+  padding: 145px 0;
+  color: #08111c;
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.intro-text .section-label {
+  color: #c89b39;
+}
+
+.intro-text h2 {
+  font-size: 58px;
+  line-height: 1.12;
+  color: #08111c;
+  margin-bottom: 34px;
+}
+
+.intro-text p {
+  font-size: 18px;
+  line-height: 36px;
+  color: #5f6770;
+}
+
+.intro-diagram {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.diagram-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.system-card {
+  flex: 1;
+  min-width: 100px;
+  padding: 22px 14px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: #08111c;
+  background: #fff;
+  border: 1px solid #ececec;
+  border-radius: 10px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+}
+
+.cap-core {
+  padding: 28px 24px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: #fff;
+  background: #07111b;
+  border-radius: 10px;
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.22);
+}
+
+.diagram-bottom {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.feature-card {
+  padding: 24px 16px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 500;
+  color: #08111c;
+  background: #fff;
+  border: 1px solid #ececec;
+  border-radius: 10px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
+}
+
+/* ========================================= */
+/* PLATFORM ARCHITECTURE */
+/* ========================================= */
+.platform-architecture {
+  padding: 120px 0;
+  background: #fafafa;
+  color: #08111c;
+}
+
+.platform-architecture .section-label {
+  color: #c89b39;
+}
+
+.architecture-flow {
+  margin-top: 55px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+}
+
+.flow-card {
+  width: 170px;
+  flex-shrink: 0;
+  height: 205px;
+  background: #08111d;
+  border-radius: 14px;
+  color: #fff;
+  text-align: center;
+  padding: 28px 16px;
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.08);
+}
+
+.flow-card h4 {
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+
+.flow-card p {
+  font-size: 13px;
+  line-height: 22px;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.flow-icon {
+  font-size: 34px;
+  color: #d6a348;
+  margin-bottom: 22px;
+}
+
+.flow-arrow {
+  width: 38px;
+  flex-shrink: 0;
+  height: 2px;
+  background: #d9b26a;
+}
+
+/* ========================================= */
+/* CORE CAPABILITIES */
+/* ========================================= */
+.core-capabilities {
+  padding: 110px 0;
+  background: #ffffff;
+  color: #08111c;
+}
+
+.core-capabilities .section-label {
+  color: #c89b39;
+}
+
+.capability-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 55px;
+}
+
+.capability-card {
+  background: white;
+  border: 1px solid #ececec;
+  border-radius: 14px;
+  padding: 40px;
+  transition: 0.3s;
+}
+
+.capability-card h3 {
+  font-family: Inter, sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: #08111c;
+  margin-bottom: 20px;
+}
+
+.capability-card p {
+  font-size: 16px;
+  line-height: 30px;
+  color: #68707b;
+}
+
+.capability-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+}
+
+/* ========================================= */
+/* WHY DIFFERENT */
+/* ========================================= */
+.why-platform {
+  padding: 120px 0;
+  background: #ffffff;
+  color: #08111c;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.why-left .section-label {
+  color: #c89b39;
+}
+
+.why-left h2 {
+  font-size: 58px;
+  line-height: 1.12;
+  color: #08111c;
+}
+
+.why-list {
+  margin-top: 35px;
+  padding: 0;
+  list-style: none;
+}
+
+.why-list li {
+  margin-bottom: 18px;
+  padding-left: 26px;
+  position: relative;
+  font-size: 18px;
+  color: #303030;
+}
+
+.why-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #d8a23a;
+  font-weight: bold;
+}
+
+.platform-dashboard {
+  width: 100%;
+  border-radius: 14px;
+  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.18);
+  display: block;
+}
+
+/* ========================================= */
+/* ENTERPRISE */
+/* ========================================= */
+.enterprise-ready {
+  padding: 110px 0;
+  background: #fafafa;
+  color: #08111c;
+}
+
+.enterprise-ready .section-label {
+  color: #c89b39;
+}
+
+.enterprise-grid {
+  margin-top: 55px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+}
+
+.enterprise-card {
+  background: white;
+  border: 1px solid #ececec;
+  border-radius: 14px;
+  padding: 38px;
+  transition: 0.3s;
+}
+
+.enterprise-card h3 {
+  font-family: Inter, sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: #08111c;
+  margin-bottom: 18px;
+}
+
+.enterprise-card p {
+  font-size: 16px;
+  line-height: 30px;
+  color: #68707b;
+}
+
+.enterprise-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* ========================================= */
+/* CTA */
+/* ========================================= */
+.platform-cta {
+  padding: 120px 0;
+  background: #07111b;
+  color: white;
+  text-align: center;
+}
+
+.platform-cta h2 {
+  font-size: 54px;
+  line-height: 1.08;
+  margin-bottom: 24px;
+}
+
+.platform-cta p {
+  width: 760px;
+  max-width: 100%;
+  margin: auto;
+  font-size: 20px;
+  line-height: 1.9;
+  color: #c8c8c8;
+}
+
+.platform-cta .cta-buttons {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  flex-wrap: wrap;
+}
