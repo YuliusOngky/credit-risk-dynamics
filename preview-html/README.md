@@ -1,23 +1,22 @@
-Open `index.html` in a browser, or from the parent folder run: `npx serve preview-html`
+# Credit Risk Dynamics — marketing site (static preview)
 
-## Undo (Git)
+Static HTML/CSS preview for [creditriskdynamics.com](https://creditriskdynamics.com).
 
-Repo root: `F:\AA_MARKETING BRANDING FINAL`
+## Local preview
 
-- Tag **`preview-snapshot`** = versi preview saat ini (sebelum polish CSS process).
-- Branch **`preview-stable`** = titik yang sama.
+From repo root:
 
-Restore hanya HTML preview:
-
-```powershell
-cd "F:\AA_MARKETING BRANDING FINAL"
-git checkout preview-snapshot -- preview-html/index.html
+```bash
+npx serve preview-html -l 5500
 ```
 
-Kembalikan seluruh project ke snapshot:
+Open `http://localhost:5500`.
 
-```powershell
-git reset --hard preview-snapshot
-```
+## Deploy on Vercel
 
-(Pastikan tidak ada perubahan penting yang belum di-commit sebelum `reset --hard`.)
+1. Import the GitHub repo **credit-risk-dynamics** (or this monorepo).
+2. Set **Root Directory** to `preview-html`.
+3. Framework Preset: **Other** (no build command).
+4. Add domain `creditriskdynamics.com` in Project → Settings → Domains.
+
+`vercel.json` in this folder enables clean URLs for `.html` pages.

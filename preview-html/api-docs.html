@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>API Documentation | Credit Risk Dynamics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/shared.css">
+<link rel="stylesheet" href="css/api-docs.css">
+</head>
+<body>
+<header>
+<div class="header">
+<a href="index.html" class="logo">
+<div class="logo-line"></div>
+<div class="logo-title">
+<div>CREDIT RISK</div>
+<div>DYNAMICS</div>
+</div>
+</a>
+<nav class="nav">
+<a href="index.html" class="nav-link">Home</a>
+<a href="platform.html" class="nav-link">Platform</a>
+<a href="governance.html" class="nav-link">Governance</a>
+<a href="decision-records.html" class="nav-link">Decision Records</a>
+<a href="resources.html" class="nav-link active">Resources</a>
+<a href="company.html" class="nav-link">Company</a>
+</nav>
+<div class="right">
+<button type="button" class="demo">LIVE DEMO</button>
+<button type="button" class="brief">REQUEST BRIEFING</button>
+</div>
+</div>
+</header>
+
+<main class="api-docs-page">
+<section class="api-docs-hero">
+<div class="container">
+<p class="api-breadcrumb"><a href="resources.html">Resources</a> / API Documentation</p>
+<h1>CAP REST API</h1>
+<p class="api-lead">Integrate credit assessment, evidence upload (including manual SLIK), and decision governance into your core systems. Base URL: <code class="api-inline-code">https://api.cap.creditriskdynamics.com</code></p>
+</div>
+</section>
+
+<div class="api-docs-shell">
+<aside class="api-nav" aria-label="API endpoints">
+<div class="api-nav-inner">
+<p class="api-nav-title">Endpoints</p>
+<ul>
+<li><a href="#authentication" class="api-nav-link">Authentication</a></li>
+<li><a href="#ekyc-parsing" class="api-nav-link">e-KYC Parsing</a></li>
+<li><a href="#slik-upload-analysis" class="api-nav-link">SLIK Upload Analysis</a></li>
+<li><a href="#credit-scoring" class="api-nav-link">Credit Scoring</a></li>
+<li><a href="#early-wage-access" class="api-nav-link">Early Wage Access</a></li>
+</ul>
+</div>
+</aside>
+
+<div class="api-content">
+
+<article id="authentication" class="api-endpoint">
+<div class="api-endpoint-row">
+<div class="api-prose">
+<div class="api-method-row">
+<span class="http-method post">POST</span>
+<span class="api-path">/api/v1/auth/token</span>
+</div>
+<h2>Authentication</h2>
+<p>Obtain a short-lived bearer token using your institution client credentials. Tokens expire after 3600 seconds and must be sent in the <code>Authorization</code> header for all subsequent requests.</p>
+<h3>Request body</h3>
+<table class="api-params">
+<thead>
+<tr><th>Parameter</th><th>Type</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><code>client_id</code></td><td>string</td><td>Issued during CAP onboarding</td></tr>
+<tr><td><code>client_secret</code></td><td>string</td><td>Secret key (rotate via admin portal)</td></tr>
+<tr><td><code>grant_type</code></td><td>string</td><td>Must be <code>client_credentials</code></td></tr>
+</tbody>
+</table>
+</div>
+<aside class="api-samples">
+<div class="code-panel">
+<div class="code-panel-header">cURL</div>
+<pre><code>curl -X POST https://api.cap.creditriskdynamics.com/api/v1/auth/token \
+  -H "Content-Type: application/json" \
+  -d '{
+    "client_id": "cap_live_bpr_001",
+    "client_secret": "••••••••••••",
+    "grant_type": "client_credentials"
+  }'</code></pre>
+</div>
+<div class="code-panel">
+<div class="code-panel-header">Response <span class="status-ok">200 OK</span></div>
+<pre><code>{
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+  "token_type": "Bearer",
+  "expires_in": 3600,
+  "scope": "assessment:write kyc:read evidence:write"
+}</code></pre>
+</div>
+</aside>
+</div>
+</article>
+
+<article id="ekyc-parsing" class="api-endpoint">
+<div class="api-endpoint-row">
+<div class="api-prose">
+<div class="api-method-row">
+<span class="http-method post">POST</span>
+<span class="api-path">/api/v1/kyc/parse</span>
+</div>
+<h2>e-KYC Parsing</h2>
+<p>Submit identity document images or vendor payloads for structured extraction. Parsed fields are attached to the decision record and validated against OJK e-KYC guidelines.</p>
+<h3>Request body</h3>
+<table class="api-params">
+<thead>
+<tr><th>Parameter</th><th>Type</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><code>application_id</code></td><td>string</td><td>CAP application reference</td></tr>
+<tr><td><code>document_type</code></td><td>string</td><td><code>ktp</code>, <code>npwp</code>, or <code>selfie</code></td></tr>
+<tr><td><code>document_base64</code></td><td>string</td><td>Base64-encoded image (max 5MB)</td></tr>
+</tbody>
+</table>
+</div>
+<aside class="api-samples">
+<div class="code-panel">
+<div class="code-panel-header">cURL</div>
+<pre><code>curl -X POST https://api.cap.creditriskdynamics.com/api/v1/kyc/parse \
+  -H "Authorization: Bearer $CAP_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "application_id": "APP-2026-88421",
+    "document_type": "ktp",
+    "document_base64": "iVBORw0KGgo..."
+  }'</code></pre>
+</div>
+<div class="code-panel">
+<div class="code-panel-header">Response <span class="status-ok">200 OK</span></div>
+<pre><code>{
+  "parse_id": "KYC-PARSE-99102",
+  "application_id": "APP-2026-88421",
+  "status": "verified",
+  "extracted": {
+    "nik": "3174010101990001",
+    "full_name": "ANDI PRASETYO",
+    "date_of_birth": "1990-01-01",
+    "address": "Jakarta Selatan"
+  },
+  "confidence_score": 0.97,
+  "recorded_at": "2026-05-11T09:14:22Z"
+}</code></pre>
+</div>
+</aside>
+</div>
+</article>
+
+<article id="slik-upload-analysis" class="api-endpoint">
+<div class="api-endpoint-row">
+<div class="api-prose">
+<div class="api-method-row">
+<span class="http-method post">POST</span>
+<span class="api-path">/api/v1/evidence/slik-upload-analysis</span>
+</div>
+<h2>SLIK Upload Analysis</h2>
+<p>Upload a SLIK report that your team obtained manually from the OJK SLIK portal (PDF or official export file). CAP does <strong>not</strong> call SLIK providers directly. After upload, CAP <strong>analyzes</strong> the file—extracts summary fields, validates format, and attaches immutable evidence to the decision record.</p>
+<h3>Request body</h3>
+<table class="api-params">
+<thead>
+<tr><th>Parameter</th><th>Type</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><code>application_id</code></td><td>string</td><td>CAP application reference</td></tr>
+<tr><td><code>file_base64</code></td><td>string</td><td>SLIK PDF or export file (max 10MB)</td></tr>
+<tr><td><code>file_name</code></td><td>string</td><td>Original filename for audit (e.g. <code>slik-andi-prasetyo.pdf</code>)</td></tr>
+<tr><td><code>nik</code></td><td>string</td><td>Must match applicant NIK on the report</td></tr>
+<tr><td><code>uploaded_by</code></td><td>string</td><td>Analyst or system user ID</td></tr>
+<tr><td><code>portal_pull_date</code></td><td>string</td><td>Date the report was downloaded from SLIK (ISO 8601)</td></tr>
+</tbody>
+</table>
+</div>
+<aside class="api-samples">
+<div class="code-panel">
+<div class="code-panel-header">cURL</div>
+<pre><code>curl -X POST https://api.cap.creditriskdynamics.com/api/v1/evidence/slik-upload-analysis \
+  -H "Authorization: Bearer $CAP_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "application_id": "APP-2026-88421",
+    "file_name": "slik-andi-prasetyo.pdf",
+    "file_base64": "JVBERi0xLjQK...",
+    "nik": "3174010101990001",
+    "uploaded_by": "analyst.joko",
+    "portal_pull_date": "2026-05-11"
+  }'</code></pre>
+</div>
+<div class="code-panel">
+<div class="code-panel-header">Response <span class="status-ok">200 OK</span></div>
+<pre><code>{
+  "evidence_id": "EV-SLIK-2026-004512",
+  "application_id": "APP-2026-88421",
+  "ingest_status": "parsed",
+  "source": "manual_portal_upload",
+  "extracted_summary": {
+    "collectibility": "1",
+    "total_outstanding_idr": 125000000,
+    "active_facilities": 3,
+    "worst_dpd_12m": 0
+  },
+  "evidence_uri": "cap://records/APP-2026-88421/evidence/slik-004512",
+  "recorded_at": "2026-05-11T10:22:41Z"
+}</code></pre>
+</div>
+</aside>
+</div>
+</article>
+
+<article id="credit-scoring" class="api-endpoint">
+<div class="api-endpoint-row">
+<div class="api-prose">
+<div class="api-method-row">
+<span class="http-method post">POST</span>
+<span class="api-path">/api/v1/assessment/evaluate</span>
+</div>
+<h2>Credit Scoring</h2>
+<p>Run a governed credit assessment using the <strong>policy version</strong> registered for your institution (tenant). CAP applies that tenant&apos;s rules, thresholds, and scorecards—not a single global model—then returns score, risk grade, policy checks, and an AI recommendation snapshot for committee review.</p>
+<div class="api-callout">
+<h4>Custom scoring per tenant</h4>
+<p>Each financial institution (tenant) maintains its own scoring configuration in CAP: product lines, cut-offs, weightings, and policy bundles. The <code>policy_version</code> field selects which approved ruleset to execute (for example <code>RETAIL-UNSECURED-v3.2</code> for Bank A vs <code>MICRO-SME-v1.4</code> for a BPR). The same API endpoint serves all tenants; isolation and auditability are enforced in the governance layer.</p>
+</div>
+<p>Inputs include applicant profile, uploaded SLIK summary, and income evidence already on the decision record.</p>
+<h3>Request body</h3>
+<table class="api-params">
+<thead>
+<tr><th>Parameter</th><th>Type</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><code>application_id</code></td><td>string</td><td>Unique application ID</td></tr>
+<tr><td><code>policy_version</code></td><td>string</td><td>Approved tenant ruleset ID (custom scoring per institution). Example: <code>RETAIL-UNSECURED-v3.2</code></td></tr>
+<tr><td><code>requested_amount</code></td><td>number</td><td>Loan amount in IDR</td></tr>
+<tr><td><code>tenor_months</code></td><td>integer</td><td>Requested tenor</td></tr>
+<tr><td><code>applicant</code></td><td>object</td><td>Profile, employment, income fields</td></tr>
+</tbody>
+</table>
+</div>
+<aside class="api-samples">
+<div class="code-panel">
+<div class="code-panel-header">cURL</div>
+<pre><code>curl -X POST https://api.cap.creditriskdynamics.com/api/v1/assessment/evaluate \
+  -H "Authorization: Bearer $CAP_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "application_id": "APP-2026-88421",
+    "policy_version": "RETAIL-UNSECURED-v3.2",
+    "requested_amount": 75000000,
+    "tenor_months": 24,
+    "applicant": {
+      "monthly_income": 18500000,
+      "employment_type": "permanent"
+    }
+  }'</code></pre>
+</div>
+<div class="code-panel">
+<div class="code-panel-header">Response <span class="status-ok">200 OK</span></div>
+<pre><code>{
+  "decision_record_id": "CDR-2026-000184",
+  "application_id": "APP-2026-88421",
+  "score": 712,
+  "risk_grade": "B+",
+  "policy_checks": {
+    "passed": 7,
+    "failed": 1,
+    "details": ["DTI within limit", "SLIK collectibility OK"]
+  },
+  "recommendation": {
+    "action": "approve",
+    "max_amount_idr": 75000000,
+    "model_version": "cap-score-2.4.1"
+  },
+  "evaluated_at": "2026-05-12T11:02:08Z"
+}</code></pre>
+</div>
+</aside>
+</div>
+</article>
+
+<article id="early-wage-access" class="api-endpoint">
+<div class="api-endpoint-row">
+<div class="api-prose">
+<div class="api-method-row">
+<span class="http-method get">GET</span>
+<span class="api-path">/api/v1/ewa/eligibility</span>
+</div>
+<h2>Early Wage Access</h2>
+<p>Check payroll-linked eligibility for earned wage access products. Uses employer verification and CAP risk limits without initiating a full loan application.</p>
+<h3>Query parameters</h3>
+<table class="api-params">
+<thead>
+<tr><th>Parameter</th><th>Type</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><code>employee_id</code></td><td>string</td><td>Employer HRIS employee reference</td></tr>
+<tr><td><code>employer_id</code></td><td>string</td><td>CAP registered employer ID</td></tr>
+</tbody>
+</table>
+</div>
+<aside class="api-samples">
+<div class="code-panel">
+<div class="code-panel-header">cURL</div>
+<pre><code>curl -G https://api.cap.creditriskdynamics.com/api/v1/ewa/eligibility \
+  -H "Authorization: Bearer $CAP_TOKEN" \
+  --data-urlencode "employee_id=EMP-44821" \
+  --data-urlencode "employer_id=EMPLOYER-BNI-001"</code></pre>
+</div>
+<div class="code-panel">
+<div class="code-panel-header">Response <span class="status-ok">200 OK</span></div>
+<pre><code>{
+  "eligible": true,
+  "max_advance_idr": 4200000,
+  "accrued_wages_idr": 8400000,
+  "advance_limit_pct": 50,
+  "next_payroll_date": "2026-05-28",
+  "risk_tier": "low"
+}</code></pre>
+</div>
+</aside>
+</div>
+</article>
+
+</div>
+</div>
+</main>
+
+<footer class="site-footer api-docs-footer">
+<div class="container">
+<div class="footer-grid">
+<div class="footer-column footer-brand">
+<a href="index.html">
+<img src="ASSET_DEV/logo-crd.svg" alt="Credit Risk Dynamics">
+</a>
+</div>
+<div class="footer-column">
+<ul>
+<li><a href="#">Platform</a></li>
+<li><a href="#">Architecture</a></li>
+</ul>
+</div>
+<div class="footer-column">
+<ul>
+<li><a href="#">Governance</a></li>
+<li><a href="#">Audit</a></li>
+</ul>
+</div>
+<div class="footer-column">
+<ul>
+<li><a href="resources.html">Resources</a></li>
+<li><a href="api-docs.html">API Docs</a></li>
+</ul>
+</div>
+<div class="footer-column">
+<ul>
+<li><a href="#">Company</a></li>
+<li><a href="#">Contact</a></li>
+</ul>
+</div>
+</div>
+</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,421 @@
+/* ==========================================================================
+   CAP API DOCUMENTATION
+   ========================================================================== */
+
+.api-docs-page {
+  padding-top: 82px;
+  background: #07111b;
+  color: #eef2f6;
+}
+
+.api-docs-hero {
+  padding: 48px 0 32px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.api-breadcrumb {
+  font-size: 0.85rem;
+  margin-bottom: 20px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.api-breadcrumb a {
+  color: #d8a23a;
+  text-decoration: none;
+}
+
+.api-breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.api-docs-hero h1 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #ffffff;
+}
+
+.api-lead {
+  max-width: 720px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.api-inline-code {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.88em;
+  color: #d8a23a;
+  background: rgba(216, 162, 58, 0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* --- 3-column shell: nav | content (prose + code per row) --- */
+.api-docs-shell {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 0;
+  max-width: 1450px;
+  margin: 0 auto;
+  padding: 0 40px 80px;
+}
+
+.api-nav {
+  position: sticky;
+  top: 100px;
+  align-self: start;
+  padding: 40px 24px 40px 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+}
+
+.api-nav-title {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.api-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.api-nav-link {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.62);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: color 0.2s, background 0.2s, border-color 0.2s;
+}
+
+.api-nav-link:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.04);
+  border-left-color: rgba(216, 162, 58, 0.45);
+}
+
+.api-content {
+  min-width: 0;
+  padding: 40px 0 40px 48px;
+}
+
+.api-endpoint {
+  padding-bottom: 64px;
+  margin-bottom: 64px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.api-endpoint:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.api-endpoint-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+  gap: 40px;
+  align-items: start;
+}
+
+.api-method-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.http-method {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 6px 10px;
+  border-radius: 6px;
+  text-transform: uppercase;
+}
+
+.http-method.post {
+  background: rgba(216, 162, 58, 0.2);
+  color: #f0c96a;
+  border: 1px solid rgba(216, 162, 58, 0.45);
+}
+
+.http-method.get {
+  background: rgba(56, 189, 148, 0.15);
+  color: #6ee7b7;
+  border: 1px solid rgba(56, 189, 148, 0.35);
+}
+
+.api-path {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.api-prose h2 {
+  font-family: Inter, sans-serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+  color: #ffffff;
+}
+
+.api-prose h3 {
+  font-family: Inter, sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  margin: 28px 0 14px;
+  font-weight: 600;
+}
+
+.api-prose p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.62);
+  margin-bottom: 12px;
+}
+
+.api-callout {
+  margin: 20px 0 24px;
+  padding: 22px 24px;
+  background: rgba(216, 162, 58, 0.08);
+  border: 1px solid rgba(216, 162, 58, 0.25);
+  border-radius: 12px;
+}
+
+.api-callout h4 {
+  font-family: Inter, sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #d8a23a;
+  margin: 0 0 10px;
+  font-weight: 700;
+}
+
+.api-callout p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.api-callout code {
+  color: #e8bf5a;
+}
+
+.api-prose code {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.88em;
+  color: #d8a23a;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.api-params {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.api-params th,
+.api-params td {
+  text-align: left;
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  vertical-align: top;
+}
+
+.api-params th {
+  color: rgba(255, 255, 255, 0.45);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.api-params td {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.api-params td code {
+  color: #e8bf5a;
+  background: transparent;
+  padding: 0;
+}
+
+/* --- Code panels (right column) --- */
+.api-samples {
+  position: sticky;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.code-panel {
+  background: #050c14;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+.code-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.status-ok {
+  color: #6ee7b7;
+  letter-spacing: 0.06em;
+}
+
+.code-panel pre {
+  margin: 0;
+  padding: 18px 16px;
+  overflow-x: auto;
+}
+
+.code-panel code {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.78rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.82);
+  white-space: pre;
+}
+
+/* --- Footer --- */
+.api-docs-footer.site-footer {
+  background-color: #050c14;
+  padding: 60px 0;
+  color: #ffffff;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.api-docs-footer .footer-column.footer-brand {
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: normal;
+  line-height: normal;
+}
+
+.api-docs-footer .footer-brand img {
+  width: 220px;
+  max-width: 100%;
+  display: block;
+}
+
+.api-docs-footer .footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: 40px;
+  font-size: 0.85rem;
+}
+
+.api-docs-footer .footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.api-docs-footer .footer-column ul li {
+  margin-bottom: 12px;
+}
+
+.api-docs-footer .footer-column ul li a {
+  color: rgba(255, 255, 255, 0.4);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.api-docs-footer .footer-column ul li a:hover {
+  color: #d8a23a;
+}
+
+@media (max-width: 1100px) {
+  .api-endpoint-row {
+    grid-template-columns: 1fr;
+  }
+
+  .api-samples {
+    position: static;
+  }
+}
+
+@media (max-width: 900px) {
+  .api-docs-shell {
+    grid-template-columns: 1fr;
+    padding: 0 24px 60px;
+  }
+
+  .api-nav {
+    position: static;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 24px 0;
+    max-height: none;
+  }
+
+  .api-nav ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .api-nav-link {
+    border-left: none;
+    border-bottom: 2px solid transparent;
+    padding: 8px 10px;
+  }
+
+  .api-nav-link:hover {
+    border-left-color: transparent;
+    border-bottom-color: #d8a23a;
+  }
+
+  .api-content {
+    padding: 32px 0 0;
+  }
+
+  .api-docs-footer .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .api-docs-hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .api-docs-footer .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}

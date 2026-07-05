@@ -14,3 +14,7 @@ WEB_SOURCECODE_hidden_cursor/
 # IDE
 .idea/
 .vscode/
+
+# Local design captures (not part of site)
+/*.jpg
+/WEB FINAL/
