@@ -35,12 +35,13 @@ h2 {
 
 .btn-primary,
 .btn-outline {
+  width: 220px;
+  height: 62px;
+  padding: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 56px;
-  padding: 0 36px;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -91,20 +92,22 @@ header {
 .logo {
   display: flex;
   align-items: center;
+  min-width: 220px;
 }
 
 .logo-line {
   width: 4px;
-  height: 42px;
+  height: 52px;
   background: #d6a33a;
-  margin-right: 18px;
+  margin-right: 20px;
+  flex-shrink: 0;
 }
 
 .logo-title {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   letter-spacing: 0.18em;
-  line-height: 22px;
+  line-height: 26px;
 }
 
 nav {

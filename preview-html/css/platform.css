@@ -3,46 +3,36 @@
 /* ========================================= */
 .platform-hero {
   position: relative;
-  min-height: 940px;
-  background-image: linear-gradient(rgba(6, 12, 22, 0.76), rgba(6, 12, 22, 0.76)),
-    url("../ASSET_DEV/meetingroom.png");
-  background-position: center center;
-  background-size: cover;
+  min-height: 760px;
   overflow: hidden;
-}
-
-.platform-hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    #07111b 0%,
-    rgba(7, 17, 27, 0.94) 28%,
-    rgba(7, 17, 27, 0.72) 55%,
-    rgba(7, 17, 27, 0.18) 78%,
-    transparent
-  );
-  pointer-events: none;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(6, 13, 23, 0.9) 0%,
+      rgba(6, 13, 23, 0.78) 38%,
+      rgba(6, 13, 23, 0.55) 70%,
+      rgba(6, 13, 23, 0.35) 100%
+    ),
+    url("../ASSET_DEV/platform-hero-bg.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .platform-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(6, 17, 27, 0.15);
-  pointer-events: none;
+  display: none;
 }
 
 .platform-hero-content {
   position: relative;
   z-index: 5;
-  min-height: 940px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 520px 1fr;
   align-items: center;
+  min-height: 760px;
 }
 
 .platform-left {
-  max-width: 620px;
+  max-width: 520px;
 }
 
 .platform-left .section-label {
@@ -50,17 +40,18 @@
 }
 
 .platform-left h1 {
-  font-size: 78px;
-  line-height: 1.02;
+  font-size: 74px;
+  line-height: 1.06;
   color: #fff;
 }
 
 .platform-left p {
   margin-top: 42px;
-  font-size: 21px;
-  line-height: 38px;
+  width: 520px;
+  max-width: 100%;
+  font-size: 22px;
+  line-height: 1.8;
   color: rgba(255, 255, 255, 0.72);
-  max-width: 560px;
 }
 
 .hero-buttons {
