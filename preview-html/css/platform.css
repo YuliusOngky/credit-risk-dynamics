@@ -15,7 +15,7 @@
     ),
     url("../ASSET_DEV/platform-hero-bg.jpg");
   background-size: cover;
-  background-position: center;
+  background-position: 65% center;
 }
 
 .platform-overlay {
