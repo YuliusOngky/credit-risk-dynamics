@@ -177,6 +177,11 @@ nav.nav {
   font-size: 11px;
   letter-spacing: 0.18em;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-family: inherit;
 }
 
 .brief {
@@ -189,6 +194,33 @@ nav.nav {
   font-size: 11px;
   letter-spacing: 0.18em;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-family: inherit;
+}
+
+.brief:hover {
+  background: #e0b04a;
+  color: #07111b;
+}
+
+.footer-contact {
+  margin-top: 18px;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.6;
+}
+
+.footer-contact a {
+  color: #d6a33a;
+  text-decoration: none;
+}
+
+.footer-contact a:hover {
+  text-decoration: underline;
 }
 
 .footer {
