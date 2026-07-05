@@ -110,7 +110,9 @@ border-top:1px solid rgba(255,255,255,.05);
 }
 .problem-wrap{
 width:1450px;
+max-width:100%;
 margin:auto;
+padding:0 40px;
 }
 .problem-tag{
 font-size:13px;
@@ -124,7 +126,7 @@ font-family:"Cormorant Garamond",serif;
 font-size:58px;
 line-height:1.15;
 font-weight:500;
-width:760px;
+max-width:760px;
 }
 .problem-grid{
 margin-top:85px;
@@ -134,9 +136,12 @@ border-top:1px solid rgba(255,255,255,.08);
 border-bottom:1px solid rgba(255,255,255,.08);
 }
 .problem-item{
-padding:55px 34px 60px;
+padding:48px 22px 52px;
 border-right:1px solid rgba(255,255,255,.08);
-min-height:340px;
+min-height:320px;
+display:flex;
+flex-direction:column;
+align-items:flex-start;
 }
 .problem-item:last-child{
 border-right:none;
@@ -149,20 +154,71 @@ border-radius:50%;
 display:flex;
 justify-content:center;
 align-items:center;
-font-size:24px;
-color:#D6A33A;
-margin-bottom:35px;
+flex-shrink:0;
+margin-bottom:28px;
+}
+.problem-icon img{
+display:block;
+width:28px;
+height:28px;
+object-fit:contain;
 }
 .problem-item h3{
 font-size:20px;
 font-weight:500;
 line-height:30px;
-margin-bottom:24px;
+margin-bottom:20px;
+min-height:60px;
 }
 .problem-item p{
 font-size:15px;
-line-height:30px;
+line-height:26px;
 color:rgba(255,255,255,.68);
+margin:0;
+flex:1;
+}
+@media (max-width:1200px){
+.problem-grid{
+grid-template-columns:repeat(3,1fr);
+}
+.problem-item:nth-child(3){
+border-right:none;
+}
+.problem-item:nth-child(n+4){
+border-top:1px solid rgba(255,255,255,.08);
+}
+.problem-item:nth-child(4),
+.problem-item:nth-child(5){
+border-right:1px solid rgba(255,255,255,.08);
+}
+.problem-item:nth-child(6){
+border-right:none;
+}
+}
+@media (max-width:768px){
+.problem{
+padding:100px 0 110px;
+}
+.problem-title{
+font-size:42px;
+}
+.problem-grid{
+margin-top:56px;
+grid-template-columns:1fr;
+border-bottom:none;
+}
+.problem-item{
+min-height:0;
+padding:36px 28px 40px;
+border-right:none;
+border-bottom:1px solid rgba(255,255,255,.08);
+}
+.problem-item:last-child{
+border-bottom:none;
+}
+.problem-item h3{
+min-height:0;
+}
 }
 
 /* =======================================================
@@ -619,32 +675,32 @@ It is the fragmented process.
 </h2>
 <div class="problem-grid">
 <div class="problem-item">
-<div class="problem-icon">&#128203;</div>
+<div class="problem-icon"><img src="ASSET_DEV/icons/document.svg" alt="" width="28" height="28"></div>
 <h3>Manual Review</h3>
 <p>KYC, SLIK, and bank statements reviewed manually by analysts</p>
 </div>
 <div class="problem-item">
-<div class="problem-icon">&#128100;</div>
+<div class="problem-icon"><img src="ASSET_DEV/icons/user.svg" alt="" width="28" height="28"></div>
 <h3>Analyst-Dependent Judgment</h3>
 <p>Decisions vary by individual experience, not by policy</p>
 </div>
 <div class="problem-item">
-<div class="problem-icon">&#8599;</div>
+<div class="problem-icon"><img src="ASSET_DEV/icons/replay.svg" alt="" width="28" height="28"></div>
 <h3>Inconsistent Decisions</h3>
 <p>Same borrower profile produces different outcomes across teams</p>
 </div>
 <div class="problem-item">
-<div class="problem-icon">&#128336;</div>
+<div class="problem-icon"><img src="ASSET_DEV/icons/time.svg" alt="" width="28" height="28"></div>
 <h3>Long Turnaround Time</h3>
 <p>Assessments pile up, committees wait, revenue is delayed</p>
 </div>
 <div class="problem-item">
-<div class="problem-icon">&#9878;</div>
+<div class="problem-icon"><img src="ASSET_DEV/icons/committee.svg" alt="" width="28" height="28"></div>
 <h3>Limited Transparency</h3>
 <p>Committees see summaries without the reasoning</p>
 </div>
 <div class="problem-item">
-<div class="problem-icon">&#128737;</div>
+<div class="problem-icon"><img src="ASSET_DEV/icons/compliance.svg" alt="" width="28" height="28"></div>
 <h3>Audit &amp; Governance Gaps</h3>
 <p>Scattered evidence that auditors and regulators cannot trace</p>
 </div>
