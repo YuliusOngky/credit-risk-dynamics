@@ -60,12 +60,55 @@
 }
 
 /* ========================================= */
+/* SHARED PLATFORM COMPONENTS */
+/* ========================================= */
+.platform-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #0a1522;
+  border: 1px solid rgba(216, 162, 58, 0.45);
+  border-radius: 10px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+.platform-icon {
+  display: block;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+.platform-title {
+  font-family: Inter, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: #fff;
+}
+
+.platform-description {
+  font-size: 13px;
+  line-height: 22px;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.platform-arrow {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+/* ========================================= */
 /* WHAT IS CAP / INTRO */
 /* ========================================= */
 .platform-intro {
-  background: #ffffff;
+  background: #050b14;
   padding: 145px 0;
-  color: #08111c;
+  color: #fff;
 }
 
 .intro-grid {
@@ -82,72 +125,79 @@
 .intro-text h2 {
   font-size: 58px;
   line-height: 1.12;
-  color: #08111c;
+  color: #fff;
   margin-bottom: 34px;
 }
 
 .intro-text p {
   font-size: 18px;
   line-height: 36px;
-  color: #5f6770;
+  color: rgba(255, 255, 255, 0.72);
 }
 
-.intro-diagram {
+.cap-diagram {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 22px;
+  padding: 8px 0;
+}
+
+.cap-connectors {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.85;
+}
+
+.cap-diagram .diagram-top,
+.cap-diagram .diagram-bottom,
+.cap-diagram .cap-governance-bar {
+  position: relative;
+  z-index: 1;
 }
 
 .diagram-top {
   display: flex;
   justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.system-card {
+.cap-diagram .diagram-top .platform-card,
+.cap-diagram .diagram-bottom .platform-card {
   flex: 1;
-  min-width: 100px;
-  padding: 22px 14px;
-  text-align: center;
-  font-size: 13px;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  color: #08111c;
-  background: #fff;
-  border: 1px solid #ececec;
-  border-radius: 10px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+  min-width: 0;
+  aspect-ratio: 1;
+  max-width: 96px;
+  padding: 14px 8px;
+  gap: 10px;
 }
 
-.cap-core {
-  padding: 28px 24px;
+.cap-diagram .platform-title {
+  font-size: 11px;
+  line-height: 1.25;
+}
+
+.cap-governance-bar {
+  padding: 26px 24px;
   text-align: center;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 500;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   color: #fff;
   background: #07111b;
+  border: 1px solid #d8a23a;
   border-radius: 10px;
-  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.4);
 }
 
 .diagram-bottom {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
-}
-
-.feature-card {
-  padding: 24px 16px;
-  text-align: center;
-  font-size: 15px;
-  font-weight: 500;
-  color: #08111c;
-  background: #fff;
-  border: 1px solid #ececec;
-  border-radius: 10px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
 }
 
 /* ========================================= */
@@ -155,8 +205,8 @@
 /* ========================================= */
 .platform-architecture {
   padding: 120px 0;
-  background: #fafafa;
-  color: #08111c;
+  background: #07111b;
+  color: #fff;
 }
 
 .platform-architecture .section-label {
@@ -167,46 +217,88 @@
   margin-top: 55px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  gap: 18px;
+  align-items: stretch;
+  gap: 12px;
+  flex-wrap: nowrap;
 }
 
-.flow-card {
-  width: 170px;
-  flex-shrink: 0;
-  height: 205px;
-  background: #08111d;
-  border-radius: 14px;
-  color: #fff;
-  text-align: center;
+.architecture-flow .arch-module.platform-card {
+  flex: 1;
+  min-width: 0;
+  max-width: 170px;
+  min-height: 205px;
   padding: 28px 16px;
-  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.08);
+  gap: 14px;
+  align-items: center;
 }
 
-.flow-card h4 {
-  font-family: Inter, sans-serif;
+.architecture-flow .platform-title {
   font-size: 16px;
-  font-weight: 500;
-  margin-bottom: 14px;
+  letter-spacing: 0.02em;
+  margin: 0;
 }
 
-.flow-card p {
-  font-size: 13px;
-  line-height: 22px;
-  color: rgba(255, 255, 255, 0.65);
+.architecture-flow .platform-description {
+  margin: 0;
 }
 
-.flow-icon {
-  font-size: 34px;
-  color: #d6a348;
-  margin-bottom: 22px;
+.architecture-flow .platform-arrow {
+  align-self: center;
 }
 
-.flow-arrow {
-  width: 38px;
-  flex-shrink: 0;
-  height: 2px;
-  background: #d9b26a;
+@media (max-width: 1200px) {
+  .architecture-flow {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 28px;
+  }
+
+  .architecture-flow .arch-module.platform-card {
+    flex: 1 1 calc(33.333% - 24px);
+    max-width: none;
+  }
+
+  .architecture-flow .platform-arrow {
+    flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .intro-grid {
+    grid-template-columns: 1fr;
+    gap: 56px;
+  }
+
+  .diagram-top,
+  .diagram-bottom {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cap-diagram .diagram-top .platform-card,
+  .cap-diagram .diagram-bottom .platform-card {
+    flex: 1 1 calc(33.333% - 10px);
+    max-width: 110px;
+  }
+
+  .cap-connectors {
+    display: none;
+  }
+
+  .architecture-flow {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .architecture-flow .arch-module.platform-card {
+    width: 100%;
+    max-width: 320px;
+    min-height: auto;
+  }
+
+  .architecture-flow .platform-arrow {
+    transform: rotate(90deg);
+  }
 }
 
 /* ========================================= */

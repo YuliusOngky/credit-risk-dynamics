@@ -85,20 +85,60 @@ REQUEST BRIEFING
                 your existing systems.
             </p>
         </div>
-        <div class="intro-diagram">
+        <div class="cap-diagram">
+            <svg class="cap-connectors" viewBox="0 0 520 280" preserveAspectRatio="none" aria-hidden="true">
+                <g stroke="#D8A23A" stroke-width="1.5" stroke-dasharray="4 5" fill="none">
+                    <path d="M52 72 L52 118 L260 118 L260 132"/>
+                    <path d="M156 72 L156 118 L260 118"/>
+                    <path d="M260 72 L260 132"/>
+                    <path d="M364 72 L364 118 L260 118"/>
+                    <path d="M468 72 L468 118 L260 118 L260 132"/>
+                    <path d="M78 198 L78 168 L260 168 L260 152"/>
+                    <path d="M234 198 L234 168 L260 168"/>
+                    <path d="M390 198 L390 168 L260 168"/>
+                    <path d="M442 198 L442 168 L260 168 L260 152"/>
+                </g>
+            </svg>
             <div class="diagram-top">
-                <div class="system-card">LOS</div>
-                <div class="system-card">Core Banking</div>
-                <div class="system-card">CRM</div>
-                <div class="system-card">Collection</div>
-                <div class="system-card">Third Party</div>
+                <article class="platform-card">
+                    <img class="platform-icon" src="ASSET_DEV/icons/los.svg" alt="" width="36" height="36">
+                    <span class="platform-title">LOS</span>
+                </article>
+                <article class="platform-card">
+                    <img class="platform-icon" src="ASSET_DEV/icons/core-banking.svg" alt="" width="36" height="36">
+                    <span class="platform-title">Core Banking</span>
+                </article>
+                <article class="platform-card">
+                    <img class="platform-icon" src="ASSET_DEV/icons/crm.svg" alt="" width="36" height="36">
+                    <span class="platform-title">CRM</span>
+                </article>
+                <article class="platform-card">
+                    <img class="platform-icon" src="ASSET_DEV/icons/collection.svg" alt="" width="36" height="36">
+                    <span class="platform-title">Collection</span>
+                </article>
+                <article class="platform-card">
+                    <img class="platform-icon" src="ASSET_DEV/icons/third-party.svg" alt="" width="36" height="36">
+                    <span class="platform-title">Third Party</span>
+                </article>
             </div>
-            <div class="cap-core">CAP GOVERNANCE</div>
+            <div class="cap-governance-bar">CAP GOVERNANCE</div>
             <div class="diagram-bottom">
-                <div class="feature-card">Evidence</div>
-                <div class="feature-card">Replay</div>
-                <div class="feature-card">Audit</div>
-                <div class="feature-card">Decision Record</div>
+                <article class="platform-card">
+                    <img class="platform-icon" src="ASSET_DEV/icons/evidence.svg" alt="" width="36" height="36">
+                    <span class="platform-title">Evidence</span>
+                </article>
+                <article class="platform-card">
+                    <img class="platform-icon" src="ASSET_DEV/icons/replay.svg" alt="" width="36" height="36">
+                    <span class="platform-title">Replay</span>
+                </article>
+                <article class="platform-card">
+                    <img class="platform-icon" src="ASSET_DEV/icons/audit.svg" alt="" width="36" height="36">
+                    <span class="platform-title">Audit</span>
+                </article>
+                <article class="platform-card">
+                    <img class="platform-icon" src="ASSET_DEV/icons/decision-record.svg" alt="" width="36" height="36">
+                    <span class="platform-title">Decision Record</span>
+                </article>
             </div>
         </div>
     </div>
@@ -111,71 +151,71 @@ REQUEST BRIEFING
     <div class="container">
         <span class="section-label">PLATFORM ARCHITECTURE</span>
         <div class="architecture-flow">
-            <div class="flow-card">
-                <div class="flow-icon">↓</div>
-                <h4>Input</h4>
-                <p>
+            <article class="arch-module platform-card">
+                <img class="platform-icon" src="ASSET_DEV/icons/input.svg" alt="" width="36" height="36">
+                <h4 class="platform-title">Input</h4>
+                <p class="platform-description">
                     KYC, SLIK, Bank Statement,
                     Financial Document
                 </p>
-            </div>
-            <div class="flow-arrow"></div>
-            <div class="flow-card">
-                <div class="flow-icon">⊞</div>
-                <h4>Evidence Engine</h4>
-                <p>
+            </article>
+            <img class="platform-arrow" src="ASSET_DEV/icons/arrow-right.svg" alt="" width="36" height="36">
+            <article class="arch-module platform-card">
+                <img class="platform-icon" src="ASSET_DEV/icons/evidence-engine.svg" alt="" width="36" height="36">
+                <h4 class="platform-title">Evidence Engine</h4>
+                <p class="platform-description">
                     OCR,
                     Parser,
                     Validation
                 </p>
-            </div>
-            <div class="flow-arrow"></div>
-            <div class="flow-card">
-                <div class="flow-icon">⚖</div>
-                <h4>Policy Engine</h4>
-                <p>
+            </article>
+            <img class="platform-arrow" src="ASSET_DEV/icons/arrow-right.svg" alt="" width="36" height="36">
+            <article class="arch-module platform-card">
+                <img class="platform-icon" src="ASSET_DEV/icons/policy-engine.svg" alt="" width="36" height="36">
+                <h4 class="platform-title">Policy Engine</h4>
+                <p class="platform-description">
                     Rules,
                     Scoring,
                     Governance
                 </p>
-            </div>
-            <div class="flow-arrow"></div>
-            <div class="flow-card">
-                <div class="flow-icon">■</div>
-                <h4>Decision Record</h4>
-                <p>
+            </article>
+            <img class="platform-arrow" src="ASSET_DEV/icons/arrow-right.svg" alt="" width="36" height="36">
+            <article class="arch-module platform-card">
+                <img class="platform-icon" src="ASSET_DEV/icons/decision-record-engine.svg" alt="" width="36" height="36">
+                <h4 class="platform-title">Decision Record</h4>
+                <p class="platform-description">
                     Versioned
                     Institutional Memory
                 </p>
-            </div>
-            <div class="flow-arrow"></div>
-            <div class="flow-card">
-                <div class="flow-icon">↺</div>
-                <h4>Replay Engine</h4>
-                <p>
+            </article>
+            <img class="platform-arrow" src="ASSET_DEV/icons/arrow-right.svg" alt="" width="36" height="36">
+            <article class="arch-module platform-card">
+                <img class="platform-icon" src="ASSET_DEV/icons/replay-engine.svg" alt="" width="36" height="36">
+                <h4 class="platform-title">Replay Engine</h4>
+                <p class="platform-description">
                     Replay
                     Every Decision
                 </p>
-            </div>
-            <div class="flow-arrow"></div>
-            <div class="flow-card">
-                <div class="flow-icon">✓</div>
-                <h4>Audit Trail</h4>
-                <p>
+            </article>
+            <img class="platform-arrow" src="ASSET_DEV/icons/arrow-right.svg" alt="" width="36" height="36">
+            <article class="arch-module platform-card">
+                <img class="platform-icon" src="ASSET_DEV/icons/audit-trail.svg" alt="" width="36" height="36">
+                <h4 class="platform-title">Audit Trail</h4>
+                <p class="platform-description">
                     Explainable
                     Governance
                 </p>
-            </div>
-            <div class="flow-arrow"></div>
-            <div class="flow-card">
-                <div class="flow-icon">↑</div>
-                <h4>Output</h4>
-                <p>
+            </article>
+            <img class="platform-arrow" src="ASSET_DEV/icons/arrow-right.svg" alt="" width="36" height="36">
+            <article class="arch-module platform-card">
+                <img class="platform-icon" src="ASSET_DEV/icons/output.svg" alt="" width="36" height="36">
+                <h4 class="platform-title">Output</h4>
+                <p class="platform-description">
                     PDF
                     API
                     Excel
                 </p>
-            </div>
+            </article>
         </div>
     </div>
 </section>
