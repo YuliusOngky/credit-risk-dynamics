@@ -46,7 +46,7 @@
   }
 
   document.querySelectorAll(".js-live-demo, .demo, .cta-secondary").forEach(bindLiveDemo);
-  document.querySelectorAll(".js-request-briefing, .brief").forEach(bindBriefing);
+  document.querySelectorAll(".js-request-briefing").forEach(bindBriefing);
 
   document.querySelectorAll(".cta-primary").forEach(function (el) {
     if (/request\s+briefing/i.test(el.textContent)) {
