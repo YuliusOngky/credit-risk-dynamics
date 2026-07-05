@@ -432,9 +432,12 @@
 /* ENTERPRISE */
 /* ========================================= */
 .enterprise-ready {
-  padding: 110px 0;
+  padding: 120px 0;
   background: #fafafa;
-  color: #08111c;
+}
+
+.enterprise-ready .container {
+  max-width: 1320px;
 }
 
 .enterprise-ready .section-label {
@@ -442,37 +445,69 @@
 }
 
 .enterprise-grid {
-  margin-top: 55px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 28px;
+  gap: 32px;
+  margin-top: 55px;
 }
 
 .enterprise-card {
-  background: white;
+  background: #ffffff;
   border: 1px solid #ececec;
-  border-radius: 14px;
-  padding: 38px;
-  transition: 0.3s;
+  border-radius: 12px;
+  padding: 40px;
+  min-height: 260px;
+  transition: 0.25s;
+}
+
+.enterprise-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+}
+
+.enterprise-icon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 24px;
+  display: block;
+}
+
+.enterprise-divider {
+  width: 34px;
+  height: 2px;
+  background: #d8a437;
+  margin: 18px 0 22px;
 }
 
 .enterprise-card h3 {
   font-family: Inter, sans-serif;
-  font-size: 22px;
-  font-weight: 500;
-  color: #08111c;
-  margin-bottom: 18px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #0b1220;
+  margin: 0;
 }
 
 .enterprise-card p {
-  font-size: 16px;
-  line-height: 30px;
-  color: #68707b;
+  font-size: 17px;
+  line-height: 1.8;
+  color: #5e6b7a;
+  margin: 0;
 }
 
-.enterprise-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+@media (max-width: 1024px) {
+  .enterprise-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .enterprise-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .enterprise-card {
+    padding: 28px;
+  }
 }
 
 /* ========================================= */
