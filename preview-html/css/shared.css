@@ -89,6 +89,11 @@ header {
   padding: 0 10px;
 }
 
+a.logo {
+  text-decoration: none;
+  color: inherit;
+}
+
 .logo {
   display: flex;
   align-items: center;
@@ -110,18 +115,52 @@ header {
   line-height: 26px;
 }
 
-nav {
+nav.nav {
   display: flex;
   gap: 48px;
+  align-items: center;
 }
 
-nav a {
-  color: white;
+.nav-link {
+  color: #ffffff;
   text-decoration: none;
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  opacity: 0.82;
+  opacity: 0.85;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 10px;
+  transition: color 0.25s ease;
+}
+
+.nav-link:hover {
+  color: #d8a23a;
+}
+
+.nav-link.active {
+  color: #d8a23a;
+  font-weight: 600;
+  border-bottom: 2px solid #d8a23a;
+  opacity: 1;
+}
+
+.page-stub {
+  padding-top: 160px;
+  padding-bottom: 120px;
+  min-height: 60vh;
+  background: #07111b;
+}
+
+.page-stub h1 {
+  font-size: 56px;
+  margin-top: 0;
+}
+
+.page-stub-lead {
+  margin-top: 24px;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 560px;
 }
 
 .right {

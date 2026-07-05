@@ -7,85 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/shared.css">
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-body{
-background:#07111B;
-font-family:Inter,sans-serif;
-color:white;
-overflow-x:hidden;
-}
-header{
-position:absolute;
-top:0;
-left:0;
-width:100%;
-z-index:100;
-}
-.header{
-width:1450px;
-height:82px;
-margin:auto;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:0 10px;
-}
-.logo{
-display:flex;
-align-items:center;
-}
-.logo-line{
-width:4px;
-height:42px;
-background:#D6A33A;
-margin-right:18px;
-}
-.logo-title{
-font-size:14px;
-font-weight:600;
-letter-spacing:.18em;
-line-height:22px;
-}
-nav{
-display:flex;
-gap:48px;
-}
-nav a{
-color:white;
-text-decoration:none;
-font-size:11px;
-letter-spacing:.18em;
-text-transform:uppercase;
-opacity:.82;
-}
-.right{
-display:flex;
-gap:18px;
-}
-.demo{
-height:42px;
-padding:0 26px;
-background:none;
-border:1px solid rgba(255,255,255,.25);
-color:white;
-font-size:11px;
-letter-spacing:.18em;
-}
-.brief{
-height:42px;
-padding:0 28px;
-border:none;
-background:#D6A33A;
-color:#07111B;
-font-weight:600;
-font-size:11px;
-letter-spacing:.18em;
-}
 .hero{
 position:relative;
 height:940px;
@@ -631,19 +554,20 @@ color:#D6A33A;
 <body>
 <header>
 <div class="header">
-<div class="logo">
+<a href="index.html" class="logo">
 <div class="logo-line"></div>
 <div class="logo-title">
 <div>CREDIT RISK</div>
 <div>DYNAMICS</div>
 </div>
-</div>
-<nav>
-<a href="platform.html">Platform</a>
-<a href="#">Governance</a>
-<a href="#">Decision Records</a>
-<a href="#">Resources</a>
-<a href="#">Company</a>
+</a>
+<nav class="nav">
+<a href="index.html" class="nav-link active">Home</a>
+<a href="platform.html" class="nav-link">Platform</a>
+<a href="governance.html" class="nav-link">Governance</a>
+<a href="decision-records.html" class="nav-link">Decision Records</a>
+<a href="resources.html" class="nav-link">Resources</a>
+<a href="company.html" class="nav-link">Company</a>
 </nav>
 <div class="right">
 <button class="demo">
