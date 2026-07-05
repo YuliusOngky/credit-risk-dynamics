@@ -3,19 +3,20 @@
 /* ========================================= */
 .platform-hero {
   position: relative;
-  min-height: 760px;
+  min-height: 920px;
   overflow: hidden;
-  background:
+  background-image:
     linear-gradient(
       90deg,
-      rgba(6, 13, 23, 0.9) 0%,
-      rgba(6, 13, 23, 0.78) 38%,
-      rgba(6, 13, 23, 0.55) 70%,
-      rgba(6, 13, 23, 0.35) 100%
+      rgba(5, 11, 20, 0.88) 0%,
+      rgba(5, 11, 20, 0.78) 30%,
+      rgba(5, 11, 20, 0.45) 60%,
+      rgba(5, 11, 20, 0.2) 100%
     ),
     url("../ASSET_DEV/platform-hero-bg.jpg");
   background-size: cover;
-  background-position: 65% center;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .platform-overlay {
@@ -26,35 +27,32 @@
   position: relative;
   z-index: 5;
   display: grid;
-  grid-template-columns: 520px 1fr;
+  grid-template-columns: 45% 55%;
   align-items: center;
-  min-height: 760px;
-}
-
-.platform-left {
-  max-width: 520px;
+  min-height: 920px;
 }
 
 .platform-left .section-label {
+  margin-top: 40px;
   margin-bottom: 38px;
 }
 
 .platform-left h1 {
   font-size: 74px;
-  line-height: 1.06;
+  line-height: 1.05;
+  max-width: 560px;
   color: #fff;
 }
 
 .platform-left p {
   margin-top: 42px;
-  width: 520px;
-  max-width: 100%;
+  max-width: 540px;
   font-size: 22px;
   line-height: 1.8;
   color: rgba(255, 255, 255, 0.72);
 }
 
-.hero-buttons {
+.platform-hero .hero-buttons {
   margin-top: 52px;
   display: flex;
   gap: 18px;
