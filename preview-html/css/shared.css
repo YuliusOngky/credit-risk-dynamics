@@ -214,13 +214,22 @@ nav.nav {
   line-height: 1.6;
 }
 
-.footer-contact a {
+.footer-contact a,
+a.contact-phone {
   color: #d6a33a;
+  font-weight: 700;
   text-decoration: none;
 }
 
-.footer-contact a:hover {
+.footer-contact a:hover,
+a.contact-phone:hover {
   text-decoration: underline;
+  color: #e0b04a;
+}
+
+.footer-links a.contact-phone {
+  color: #d6a33a;
+  font-weight: 700;
 }
 
 .footer {
