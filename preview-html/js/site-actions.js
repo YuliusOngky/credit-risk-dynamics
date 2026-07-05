@@ -62,4 +62,49 @@
       bindBriefing(el);
     }
   });
+
+  function initMobileNav() {
+    document.querySelectorAll("header").forEach(function (headerEl) {
+      var bar = headerEl.querySelector(".header");
+      if (!bar || bar.querySelector(".nav-toggle")) return;
+
+      var toggle = document.createElement("button");
+      toggle.type = "button";
+      toggle.className = "nav-toggle";
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.setAttribute("aria-label", "Open menu");
+      toggle.innerHTML =
+        '<span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span>';
+
+      var nav = bar.querySelector("nav.nav");
+      if (nav) bar.insertBefore(toggle, nav);
+
+      function closeNav() {
+        headerEl.classList.remove("is-nav-open");
+        document.body.classList.remove("nav-open");
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.setAttribute("aria-label", "Open menu");
+      }
+
+      toggle.addEventListener("click", function () {
+        var open = !headerEl.classList.contains("is-nav-open");
+        if (open) {
+          headerEl.classList.add("is-nav-open");
+          document.body.classList.add("nav-open");
+          toggle.setAttribute("aria-expanded", "true");
+          toggle.setAttribute("aria-label", "Close menu");
+        } else {
+          closeNav();
+        }
+      });
+
+      if (nav) {
+        nav.querySelectorAll("a").forEach(function (link) {
+          link.addEventListener("click", closeNav);
+        });
+      }
+    });
+  }
+
+  initMobileNav();
 })();
