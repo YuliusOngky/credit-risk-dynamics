@@ -47,6 +47,19 @@ body.nav-open {
     padding: 0 20px;
   }
 
+  /* Force mobile layout (fixes shrink-to-fit desktop on some phones) */
+  header .header nav.nav {
+    display: none !important;
+  }
+
+  header.is-nav-open .header nav.nav {
+    display: flex !important;
+  }
+
+  .process-wrap {
+    grid-template-columns: 1fr !important;
+  }
+
   .header {
     padding: 0 16px;
     height: 72px;

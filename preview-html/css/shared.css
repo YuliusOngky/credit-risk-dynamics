@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+html {
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   background: #07111b;
   font-family: Inter, sans-serif;
@@ -79,14 +84,14 @@ header {
 }
 
 .header {
-  width: 1450px;
-  max-width: 100%;
+  width: 100%;
+  max-width: 1450px;
   height: 82px;
   margin: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 10px;
+  padding: 0 16px;
 }
 
 a.logo {
@@ -238,8 +243,8 @@ a.contact-phone:hover {
 }
 
 .footer-wrap {
-  width: 1450px;
-  max-width: 100%;
+  width: 100%;
+  max-width: 1450px;
   margin: auto;
   padding: 0 40px;
 }

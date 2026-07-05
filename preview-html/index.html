@@ -7,8 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/shared.css">
-<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/shared.css?v=20260706">
+<link rel="stylesheet" href="css/responsive.css?v=20260706">
 <style>
 .hero{
 position:relative;
@@ -31,14 +31,18 @@ background:linear-gradient(90deg,#07111B 0%,rgba(7,17,27,.94) 28%,rgba(7,17,27,.
 .hero-content{
 position:relative;
 z-index:5;
-width:1450px;
+width:100%;
+max-width:1450px;
 height:100%;
 margin:auto;
+padding:0 40px;
 display:flex;
 align-items:center;
+box-sizing:border-box;
 }
 .left{
-width:620px;
+width:100%;
+max-width:620px;
 }
 .tag{
 font-size:13px;
@@ -61,7 +65,8 @@ margin-top:42px;
 font-size:21px;
 line-height:38px;
 color:rgba(255,255,255,.72);
-width:560px;
+width:100%;
+max-width:560px;
 }
 .buttons{
 margin-top:52px;
@@ -110,10 +115,11 @@ padding:140px 0 150px;
 border-top:1px solid rgba(255,255,255,.05);
 }
 .problem-wrap{
-width:1450px;
-max-width:100%;
+width:100%;
+max-width:1450px;
 margin:auto;
 padding:0 40px;
+box-sizing:border-box;
 }
 .problem-tag{
 font-size:13px;
@@ -230,8 +236,11 @@ background:#ffffff;
 padding:145px 0;
 }
 .process-wrap{
-width:1450px;
+width:100%;
+max-width:1450px;
 margin:auto;
+padding:0 40px;
+box-sizing:border-box;
 display:grid;
 grid-template-columns:550px 1fr;
 column-gap:100px;
@@ -407,8 +416,11 @@ padding:150px 0 140px;
 border-top:1px solid #EFEFEF;
 }
 .impact-wrap{
-width:1450px;
+width:100%;
+max-width:1450px;
 margin:auto;
+padding:0 40px;
+box-sizing:border-box;
 }
 .impact-tag{
 font-size:13px;
@@ -466,8 +478,11 @@ background:#07111B;
 padding:160px 0;
 }
 .cta-wrap{
-width:1450px;
+width:100%;
+max-width:1450px;
 margin:auto;
+padding:0 40px;
+box-sizing:border-box;
 text-align:center;
 }
 .cta small{
@@ -525,8 +540,11 @@ background:#050D17;
 padding:90px 0 40px;
 }
 .footer-wrap{
-width:1450px;
+width:100%;
+max-width:1450px;
 margin:auto;
+padding:0 40px;
+box-sizing:border-box;
 }
 .footer-top{
 display:grid;
@@ -958,6 +976,6 @@ Cookies
 </div>
 </div>
 </footer>
-<script src="js/site-actions.js"></script>
+<script src="js/site-actions.js?v=20260706"></script>
 </body>
 </html>
