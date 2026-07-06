@@ -235,6 +235,26 @@ nav.nav {
   line-height: 1.6;
 }
 
+.footer-logo-img {
+  display: block;
+  width: auto;
+  max-width: min(280px, 100%);
+  height: auto;
+}
+
+.footer-brand-link {
+  display: inline-block;
+  line-height: 0;
+  text-decoration: none;
+}
+
+.site-footer .footer-column.footer-brand img,
+.footer-brand img,
+.footer-logo-img {
+  max-width: min(280px, 100%);
+  height: auto;
+}
+
 .footer-contact a,
 a.contact-phone {
   color: #d6a33a;
@@ -293,7 +313,8 @@ a.contact-phone:hover {
   line-height: 30px;
 }
 
-.footer-brand span {
+.footer-brand span,
+.footer-tagline {
   display: block;
   opacity: 0.65;
   font-size: 13px;

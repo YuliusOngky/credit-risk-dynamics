@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 72" fill="none" role="img" aria-label="Credit Risk Dynamics">
+  <defs>
+    <linearGradient id="crd-gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e8c56a"/>
+      <stop offset="50%" stop-color="#d6a33a"/>
+      <stop offset="100%" stop-color="#9a7328"/>
+    </linearGradient>
+  </defs>
+  <rect width="320" height="72" fill="#050d17"/>
+  <rect x="0" y="8" width="4" height="56" fill="url(#crd-gold)"/>
+  <text x="22" y="32" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="600" letter-spacing="0.22em">CREDIT RISK</text>
+  <text x="22" y="58" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="600" letter-spacing="0.22em">DYNAMICS</text>
+</svg>
