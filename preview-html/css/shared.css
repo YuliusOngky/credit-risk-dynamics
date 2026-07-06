@@ -89,20 +89,32 @@ header {
   height: 82px;
   margin: auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-  padding: 0 16px;
+  gap: 20px;
+  padding: 0 40px;
 }
 
-a.logo {
-  text-decoration: none;
-  color: inherit;
+.header-nav-cluster {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(14px, 2vw, 28px);
+  margin-left: auto;
+  min-width: 0;
+  flex: 1;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  min-width: 220px;
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+a.logo {
+  text-decoration: none;
+  color: inherit;
 }
 
 .logo-line {
@@ -122,8 +134,10 @@ a.logo {
 
 nav.nav {
   display: flex;
-  gap: 48px;
+  gap: clamp(12px, 1.6vw, 36px);
   align-items: center;
+  flex-shrink: 1;
+  min-width: 0;
 }
 
 .nav-link {
@@ -170,7 +184,9 @@ nav.nav {
 
 .right {
   display: flex;
-  gap: 18px;
+  gap: 12px;
+  flex-shrink: 0;
+  align-items: center;
 }
 
 .demo {

@@ -76,8 +76,10 @@
       toggle.innerHTML =
         '<span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span>';
 
+      var cluster = bar.querySelector(".header-nav-cluster");
       var nav = bar.querySelector("nav.nav");
-      if (nav) bar.insertBefore(toggle, nav);
+      var insertBefore = cluster || nav;
+      if (insertBefore) bar.insertBefore(toggle, insertBefore);
 
       function closeNav() {
         headerEl.classList.remove("is-nav-open");

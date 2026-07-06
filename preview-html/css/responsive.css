@@ -42,17 +42,45 @@ body.nav-open {
   overflow: hidden;
 }
 
-@media (max-width: 900px) {
+@media (min-width: 1101px) and (max-width: 1320px) {
+  .header {
+    padding: 0 32px;
+    gap: 12px;
+  }
+
+  .nav-link {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    padding-bottom: 8px;
+  }
+
+  .logo-title {
+    font-size: 14px;
+    letter-spacing: 0.14em;
+  }
+
+  .demo,
+  .brief {
+    height: 40px;
+    padding: 0 18px;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+  }
+}
+
+@media (max-width: 1100px) {
   .container {
     padding: 0 20px;
   }
 
   /* Force mobile layout (fixes shrink-to-fit desktop on some phones) */
-  header .header nav.nav {
+  header .header nav.nav,
+  header .header .header-nav-cluster nav.nav {
     display: none !important;
   }
 
-  header.is-nav-open .header nav.nav {
+  header.is-nav-open .header nav.nav,
+  header.is-nav-open .header .header-nav-cluster nav.nav {
     display: flex !important;
   }
 
@@ -135,11 +163,18 @@ body.nav-open {
     border-bottom-color: #d8a23a;
   }
 
-  .header > .right {
+  .header-nav-cluster {
+    flex: 0;
+    margin-left: 0;
+  }
+
+  .header > .right,
+  .header-nav-cluster > .right {
     display: none;
   }
 
-  header.is-nav-open .header > .right {
+  header.is-nav-open .header > .right,
+  header.is-nav-open .header-nav-cluster > .right {
     display: flex;
     position: fixed;
     left: 20px;
@@ -151,7 +186,9 @@ body.nav-open {
   }
 
   header.is-nav-open .header > .right .demo,
-  header.is-nav-open .header > .right .brief {
+  header.is-nav-open .header > .right .brief,
+  header.is-nav-open .header-nav-cluster > .right .demo,
+  header.is-nav-open .header-nav-cluster > .right .brief {
     width: 100%;
     height: 48px;
     justify-content: center;
